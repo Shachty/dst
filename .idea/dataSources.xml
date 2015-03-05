@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2788949752">
+    <data-source source="LOCAL" name="dst_pu" uuid="54409f5e-4612-443a-a98b-c83a3a07b5fa">
+      <driver-ref>h2.embedded</driver-ref>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:/tmp/database/dst;AUTO_SERVER=TRUE;MVCC=true</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
