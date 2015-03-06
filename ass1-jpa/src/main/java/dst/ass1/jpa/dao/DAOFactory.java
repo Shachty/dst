@@ -22,7 +22,7 @@ public class DAOFactory {
 	}
 
 	public IMOCPlatformDAO getPlatformDAO() {
-		// TODOdsfs
+		// TODOdsfssdadsfs
 		return null;
 	}
 
