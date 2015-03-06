@@ -21,10 +21,10 @@ public class DAOFactory {
 		this.em = em;
 	}
 
-	public IMOCPlatformDAO getPlatformDAO() {
-		// TODOdsfssdadsfs
-		return null;
-	}
+    public IMOCPlatformDAO getPlatformDAO() {
+        // TODO
+        return null;
+    }
 
 	public IModeratorDAO getModeratorDAO() {
 		// TODO
