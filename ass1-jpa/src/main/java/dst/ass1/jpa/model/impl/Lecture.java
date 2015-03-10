@@ -27,16 +27,6 @@ public class Lecture implements ILecture {
     private IMetadata metadata;
     private Integer streamingTime;
 
-    public Lecture(Long id, boolean isPaid, ILecturer lecturer, ILectureStreaming lectureStreaming, IMetadata Metadata) {
-        this.id = id;
-        this.isPaid = isPaid;
-        this.lecturer = lecturer;
-        this.lectureStreaming = lectureStreaming;
-        this.metadata = Metadata;
-
-        streamingTime = (int) (Math.abs(lectureStreaming.getStart().getTime() - lectureStreaming.getEnd().getTime()) / 1000);
-    }
-
     @Override
     public Long getId() {
         return this.id;

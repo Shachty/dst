@@ -9,12 +9,6 @@ import java.util.List;
 @Table(name = "metadata")
 public class Metadata implements IMetadata {
 
-
-    public Metadata(String course, List<String> settings) {
-        this.course = course;
-        this.settings = settings;
-    }
-
     @Id
     @GeneratedValue
     private Long id;
