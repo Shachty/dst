@@ -4,16 +4,17 @@ import dst.ass1.jpa.model.ILecturer;
 import dst.ass1.jpa.model.IMOCPlatform;
 import dst.ass1.jpa.model.IMembershipKey;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class MembershipKey implements IMembershipKey {
 
-    @OneToOne
+    @Id
+    @OneToOne(targetEntity = Lecturer.class)
     private ILecturer lecturer;
 
-    @OneToOne
+    @Id
+    @OneToOne(targetEntity = MOCPlatform.class)
     private IMOCPlatform mocPlatform;
 
 

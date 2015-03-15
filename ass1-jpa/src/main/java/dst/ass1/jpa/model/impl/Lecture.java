@@ -17,14 +17,15 @@ public class Lecture implements ILecture {
 
     private int attendingStudents;
     private boolean isPaid;
-    @ManyToOne
+    @ManyToOne(targetEntity = Lecturer.class)
     private ILecturer lecturer;
 
-    @OneToOne
+    @OneToOne(targetEntity = LectureStreaming.class, mappedBy = "lecture")
     private ILectureStreaming lectureStreaming;
 
-    @OneToOne
+    @OneToOne(targetEntity = Metadata.class)
     private IMetadata metadata;
+
     private Integer streamingTime;
 
     @Override

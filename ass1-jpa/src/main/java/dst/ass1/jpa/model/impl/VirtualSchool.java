@@ -23,19 +23,19 @@ public class VirtualSchool implements IVirtualSchool {
     private  Date lastMaintenance;
     private Date nextMaintenance;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = VirtualSchool.class)
     private List<IVirtualSchool> composedOf;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = VirtualSchool.class)
     private List <IVirtualSchool> partOf;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Moderator.class)
     private IModerator moderator;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = MOCPlatform.class)
     private  IMOCPlatform mocPlatform;
 
-    @OneToMany
+    @OneToMany(targetEntity = Classroom.class)
     private List<IClassroom> classrooms;
 
     @Override

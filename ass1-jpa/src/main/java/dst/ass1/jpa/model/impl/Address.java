@@ -4,7 +4,7 @@ import dst.ass1.jpa.model.IAddress;
 
 import javax.persistence.*;
 
-@Entity
+@Embeddable
 @Table(name = "address")
 public class Address implements IAddress {
 

@@ -26,16 +26,16 @@ public class Lecturer implements ILecturer {
     private String bankCode;
 
 
-    @OneToOne
+    @OneToOne(targetEntity = Address.class, mappedBy = "lecturer")
     private IAddress address;
 
-    @OneToMany
+    @OneToMany(targetEntity = Lecture.class)
     private List<ILecture> lectures;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = MOCPlatform.class)
     private List<IMOCPlatform> mocPlatforms;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Membership.class)
     private List<IMembership> memberships;
 
     @Override

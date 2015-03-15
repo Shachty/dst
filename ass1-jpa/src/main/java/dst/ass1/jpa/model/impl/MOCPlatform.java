@@ -24,10 +24,10 @@ public class MOCPlatform implements IMOCPlatform {
 
     private  BigDecimal costsPerStudent;
 
-    @OneToMany
+    @OneToMany(targetEntity = VirtualSchool.class)
     private List<IVirtualSchool> virtualSchools;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = Lecturer.class)
     private List<ILecturer> lecturers;
 
     private List<IMembership> memberships;

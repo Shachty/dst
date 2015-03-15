@@ -24,10 +24,10 @@ public class Classroom implements IClassroom {
     private Date activated;
     private Date lastUpdated;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = VirtualSchool.class)
     private IVirtualSchool virtualSchool;
 
-    @ManyToMany
+    @ManyToMany(targetEntity = LectureStreaming.class, mappedBy = "classrooms")
     private  List<ILectureStreaming> lectureStreamings;
 
     @Override
