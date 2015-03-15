@@ -19,7 +19,7 @@ public class LectureStreaming implements ILectureStreaming {
     private  Date end;
     private LectureStatus lectureStatus;
 
-    @ManyToMany(targetEntity = Classroom.class)
+    @ManyToMany(targetEntity = Classroom.class, mappedBy = "lectureStreamings")
     private List<IClassroom> classrooms;
 
     @OneToOne(targetEntity = Lecture.class, mappedBy = "lecture")

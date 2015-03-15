@@ -27,7 +27,11 @@ public class Classroom implements IClassroom {
     @ManyToOne(targetEntity = VirtualSchool.class)
     private IVirtualSchool virtualSchool;
 
-    @ManyToMany(targetEntity = LectureStreaming.class, mappedBy = "classrooms")
+    @ManyToMany(targetEntity = LectureStreaming.class)
+    @JoinTable(
+            name = "classroom_stream",
+            joinColumns = {@JoinColumn(name = "classroom_id", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "stream_id", referencedColumnName = "ID")})
     private  List<ILectureStreaming> lectureStreamings;
 
     @Override

@@ -15,6 +15,7 @@ public class VirtualSchool implements IVirtualSchool {
 
     @Id
     @GeneratedValue
+    @Column(name = "school_id")
     private Long id;
 
     @Column(unique = true)
@@ -26,13 +27,15 @@ public class VirtualSchool implements IVirtualSchool {
     @ManyToMany(targetEntity = VirtualSchool.class)
     private List<IVirtualSchool> composedOf;
 
+    @ManyToOne(targetEntity = Moderator.class)
+    @JoinColumn(name = "school_id")
+    private IModerator moderator;
+
     @ManyToMany(targetEntity = VirtualSchool.class)
     private List <IVirtualSchool> partOf;
 
-    @ManyToOne(targetEntity = Moderator.class)
-    private IModerator moderator;
-
     @ManyToOne(targetEntity = MOCPlatform.class)
+    @JoinColumn(name = "school_id")
     private  IMOCPlatform mocPlatform;
 
     @OneToMany(targetEntity = Classroom.class)

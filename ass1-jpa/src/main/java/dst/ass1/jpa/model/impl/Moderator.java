@@ -18,10 +18,11 @@ public class Moderator implements IModerator {
     private String firstName;
     private String lastName;
 
-    @OneToOne(targetEntity = Address.class, mappedBy = "moderators")
+    @OneToOne(targetEntity = Address.class)
+    @PrimaryKeyJoinColumn
     private IAddress address;
 
-    @OneToMany(targetEntity = VirtualSchool.class)
+    @OneToMany(targetEntity = VirtualSchool.class, mappedBy = "moderator")
     private List<IVirtualSchool> advisedVirtualSchools;
 
     @Override

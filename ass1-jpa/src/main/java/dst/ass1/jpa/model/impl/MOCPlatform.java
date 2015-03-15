@@ -24,7 +24,7 @@ public class MOCPlatform implements IMOCPlatform {
 
     private  BigDecimal costsPerStudent;
 
-    @OneToMany(targetEntity = VirtualSchool.class)
+    @OneToMany(targetEntity = VirtualSchool.class, mappedBy = "mocPlatform")
     private List<IVirtualSchool> virtualSchools;
 
     @ManyToMany(targetEntity = Lecturer.class)

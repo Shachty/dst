@@ -26,10 +26,11 @@ public class Lecturer implements ILecturer {
     private String bankCode;
 
 
-    @OneToOne(targetEntity = Address.class, mappedBy = "lecturer")
+    @OneToOne(targetEntity = Address.class)
+    @PrimaryKeyJoinColumn
     private IAddress address;
 
-    @OneToMany(targetEntity = Lecture.class)
+    @OneToMany(targetEntity = Lecture.class, mappedBy = "lecturer")
     private List<ILecture> lectures;
 
     @ManyToMany(targetEntity = MOCPlatform.class)
