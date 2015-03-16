@@ -20,8 +20,7 @@ public class Lecture implements ILecture {
     @ManyToOne(targetEntity = Lecturer.class)
     private ILecturer lecturer;
 
-    @OneToOne(targetEntity = LectureStreaming.class)
-    @PrimaryKeyJoinColumn
+    @OneToOne(targetEntity = LectureStreaming.class, mappedBy = "lecture")
     private ILectureStreaming lectureStreaming;
 
     @OneToOne(targetEntity = Metadata.class)

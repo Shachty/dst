@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class LectureStreaming implements ILectureStreaming {
 
     @Id
@@ -22,7 +23,8 @@ public class LectureStreaming implements ILectureStreaming {
     @ManyToMany(targetEntity = Classroom.class, mappedBy = "lectureStreamings")
     private List<IClassroom> classrooms;
 
-    @OneToOne(targetEntity = Lecture.class, mappedBy = "lecture")
+    @OneToOne(targetEntity = Lecture.class)
+    @PrimaryKeyJoinColumn
     private  ILecture lecture;
 
     @Override
