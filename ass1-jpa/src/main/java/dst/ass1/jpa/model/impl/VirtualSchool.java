@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@NamedQuery(name = "GetByIdVirtualSchool", query = "SELECT v from VirtualSchool v where id = :id")
 public class VirtualSchool implements IVirtualSchool {
 
     @Id
@@ -43,7 +44,7 @@ public class VirtualSchool implements IVirtualSchool {
 
     @Override
     public Long getId() {
-        return null;
+        return this.id;
     }
 
     @Override

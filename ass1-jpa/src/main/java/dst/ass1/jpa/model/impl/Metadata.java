@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedQuery(name = "GetByIdMetadata", query = "SELECT m from Metadata m where id = :id")
 public class Metadata implements IMetadata {
 
     @Id

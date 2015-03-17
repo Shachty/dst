@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@NamedQuery(name = "GetByIdClassroom", query = "SELECT c from Classroom c where id = :id")
 public class Classroom implements IClassroom {
 
     @Id
