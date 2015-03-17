@@ -15,6 +15,7 @@ public class Metadata implements IMetadata {
 
     private String course;
 
+    @OrderColumn(name = "settings_order")
     @ElementCollection
     private List<String> settings;
 

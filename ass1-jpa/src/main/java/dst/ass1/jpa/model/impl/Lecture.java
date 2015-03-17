@@ -4,11 +4,13 @@ import dst.ass1.jpa.model.ILecture;
 import dst.ass1.jpa.model.ILectureStreaming;
 import dst.ass1.jpa.model.ILecturer;
 import dst.ass1.jpa.model.IMetadata;
+import dst.ass1.jpa.util.Constants;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "lecture")
+@NamedQuery(name = Constants.Q_MOSTACTIVELECTURER, query = "SELECT l FROM Lecture l WHERE l.lectureStreaming.lectureStatus = dst.ass1.jpa.model.LectureStatus.FINISHED")
 public class Lecture implements ILecture {
 
     @Id
@@ -23,7 +25,7 @@ public class Lecture implements ILecture {
     @OneToOne(targetEntity = LectureStreaming.class, optional = false, cascade = CascadeType.ALL)
     private ILectureStreaming lectureStreaming;
 
-    @OneToOne(targetEntity = Metadata.class)
+    @OneToOne(targetEntity = Metadata.class, optional = false)
     private IMetadata metadata;
 
     private Integer streamingTime;
