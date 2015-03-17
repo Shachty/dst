@@ -5,9 +5,14 @@ import dst.ass1.jpa.model.ILecturer;
 import dst.ass1.jpa.model.IMOCPlatform;
 import dst.ass1.jpa.model.IMembership;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public class MembershipDAO implements IMembershipDAO {
+    public MembershipDAO(EntityManager em) {
+
+    }
+
     @Override
     public List<IMembership> findByLecturerAndPlatform(ILecturer lecturer, IMOCPlatform platform) {
         return null;

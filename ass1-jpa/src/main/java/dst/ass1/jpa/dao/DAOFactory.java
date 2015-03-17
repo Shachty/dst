@@ -28,39 +28,39 @@ public class DAOFactory {
 	}
 
     public IMOCPlatformDAO getPlatformDAO() {
-        return new MOCPlatformDAO();
+        return new MOCPlatformDAO(em);
     }
 
 	public IModeratorDAO getModeratorDAO() {
-		return new ModeratorDAO();
+		return new ModeratorDAO(em);
 	}
 
 	public IVirtualSchoolDAO getVirtualSchoolDAO() {
-		return new VirtualSchoolDAO();
+		return new VirtualSchoolDAO(em);
 	}
 
 	public IClassroomDAO getClassroomDAO() {
-        return new ClassroomDAO();
+        return new ClassroomDAO(em);
     }
 
 	public IMetadataDAO getMetadataDAO() {
-		return new MetadataDAO();
+		return new MetadataDAO(em);
 	}
 
 	public ILectureStreamingDAO getLectureStreamingDAO() {
-		return new LectureStreamingDAO();
+		return new LectureStreamingDAO(em);
 	}
 
 	public ILectureDAO getLectureDAO() {
-		return new LectureDAO();
+		return new LectureDAO(em);
 	}
 
 	public IMembershipDAO getMembershipDAO() {
-		return new MembershipDAO();
+		return new MembershipDAO(em);
 	}
 
 	public ILecturerDAO getLecturerDAO() {
-		return new LecturerDAO();
+		return new LecturerDAO(em);
 	}
 
 	/*

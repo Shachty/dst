@@ -9,7 +9,6 @@ import java.util.List;
 
 @Entity
 @Table( uniqueConstraints = @UniqueConstraint(columnNames = {"accountNo","bankCode"}))
-@PrimaryKeyJoinColumn(name = "person_id")
 public class Lecturer extends Person implements ILecturer {
 
 
@@ -24,7 +23,7 @@ public class Lecturer extends Person implements ILecturer {
     @OneToMany(targetEntity = Lecture.class)
     private List<ILecture> lectures;
 
-    @OneToMany(targetEntity = Membership.class)
+    @OneToMany(targetEntity = Membership.class, mappedBy = "membershipKey.lecturer")
     private List<IMembership> memberships;
 
     @Override

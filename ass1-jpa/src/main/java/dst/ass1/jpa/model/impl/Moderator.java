@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "person_id")
 public class Moderator extends Person implements IModerator {
 
 

@@ -8,6 +8,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@AssociationOverrides({
+        @AssociationOverride(name ="membershipKey.lecturer", joinColumns = @JoinColumn(name ="lecturer_id")),
+        @AssociationOverride(name ="membershipKey.mocPlatform", joinColumns = @JoinColumn(name ="mocPlatform_id"))
+})
 public class Membership implements IMembership {
 
     @EmbeddedId

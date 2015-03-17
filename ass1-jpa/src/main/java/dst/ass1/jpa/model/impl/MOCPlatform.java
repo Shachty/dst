@@ -27,7 +27,7 @@ public class MOCPlatform implements IMOCPlatform {
     @OneToMany(targetEntity = VirtualSchool.class)
     private List<IVirtualSchool> virtualSchools;
 
-    @OneToMany(targetEntity = Membership.class)
+    @OneToMany(targetEntity = Membership.class, mappedBy = "membershipKey.mocPlatform")
     private List<IMembership> memberships;
 
     @Override
