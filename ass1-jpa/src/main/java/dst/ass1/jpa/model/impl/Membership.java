@@ -1,5 +1,6 @@
 package dst.ass1.jpa.model.impl;
 
+import dst.ass1.jpa.model.ILecturer;
 import dst.ass1.jpa.model.IMembership;
 import dst.ass1.jpa.model.IMembershipKey;
 
@@ -9,8 +10,8 @@ import java.util.Date;
 @Entity
 public class Membership implements IMembership {
 
-    @Id
-    private IMembershipKey membershipKey;
+    @EmbeddedId
+    private MembershipKey membershipKey;
 
     private Date registration;
     private double discount;
@@ -22,7 +23,7 @@ public class Membership implements IMembership {
 
     @Override
     public void setId(IMembershipKey id) {
-        this.membershipKey = id;
+        this.membershipKey = (MembershipKey) id;
     }
 
     @Override
@@ -44,4 +45,7 @@ public class Membership implements IMembership {
     public void setDiscount(Double discount) {
         this.discount = discount;
     }
+
+
+
 }

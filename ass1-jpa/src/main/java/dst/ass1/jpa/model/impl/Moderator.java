@@ -5,22 +5,13 @@ import dst.ass1.jpa.model.IModerator;
 import dst.ass1.jpa.model.IVirtualSchool;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "moderator")
-public class Moderator implements IModerator {
+@PrimaryKeyJoinColumn(name = "person_id")
+public class Moderator extends Person implements IModerator {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    private String firstName;
-    private String lastName;
-
-    @OneToOne(targetEntity = Address.class)
-    @PrimaryKeyJoinColumn
-    private IAddress address;
 
     @OneToMany(targetEntity = VirtualSchool.class, mappedBy = "moderator")
     private List<IVirtualSchool> advisedVirtualSchools;
@@ -37,6 +28,11 @@ public class Moderator implements IModerator {
 
     @Override
     public void addAdvisedVirtualSchool(IVirtualSchool virtualSchool) {
+
+        if(this.advisedVirtualSchools == null){
+            this.advisedVirtualSchools = new ArrayList<IVirtualSchool>();
+        }
+
         this.advisedVirtualSchools.add(virtualSchool);
     }
 
@@ -77,6 +73,6 @@ public class Moderator implements IModerator {
 
     @Override
     public void setAddress(IAddress address) {
-        this.address = address;
+        super.setAddress(address);
     }
 }

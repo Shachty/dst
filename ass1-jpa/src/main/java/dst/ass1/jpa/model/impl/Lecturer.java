@@ -4,39 +4,27 @@ import dst.ass1.jpa.model.*;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "lecturer")
-public class Lecturer implements ILecturer {
+@Table( uniqueConstraints = @UniqueConstraint(columnNames = {"accountNo","bankCode"}))
+@PrimaryKeyJoinColumn(name = "person_id")
+public class Lecturer extends Person implements ILecturer {
 
-    @Id
-    @GeneratedValue
-    private Long id;
 
-    private String firstName;
-    private String lastName;
     private String lecturerName;
     private byte[] password;
 
-    @Column(unique = true)
     private String accountNo;
 
-    @Column(unique = true)
     private String bankCode;
 
 
-    @OneToOne(targetEntity = Address.class)
-    @PrimaryKeyJoinColumn
-    private IAddress address;
-
-    @OneToMany(targetEntity = Lecture.class, mappedBy = "lecturer")
+    @OneToMany(targetEntity = Lecture.class)
     private List<ILecture> lectures;
 
-    @ManyToMany(targetEntity = MOCPlatform.class)
-    private List<IMOCPlatform> mocPlatforms;
-
-    @ManyToOne(targetEntity = Membership.class)
+    @OneToMany(targetEntity = Membership.class)
     private List<IMembership> memberships;
 
     @Override
@@ -92,6 +80,11 @@ public class Lecturer implements ILecturer {
 
     @Override
     public void addLecture(ILecture lecture) {
+
+        if(this.lectures == null){
+            this.lectures = new ArrayList<ILecture>();
+        }
+
         this.lectures.add(lecture);
     }
 
@@ -107,6 +100,11 @@ public class Lecturer implements ILecturer {
 
     @Override
     public void addMembership(IMembership membership) {
+
+        if(this.memberships == null){
+            this.memberships = new ArrayList<IMembership>();
+        }
+
         this.memberships.add(membership);
     }
 
@@ -147,6 +145,6 @@ public class Lecturer implements ILecturer {
 
     @Override
     public void setAddress(IAddress address) {
-        this.address = address;
+        super.setAddress(address);
     }
 }

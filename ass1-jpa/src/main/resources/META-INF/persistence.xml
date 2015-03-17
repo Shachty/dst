@@ -12,9 +12,19 @@
         	<property name="hibernate.connection.url" value="jdbc:h2:/tmp/database/dst;AUTO_SERVER=TRUE;MVCC=true" />
         	<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
         	<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-        	<property name="hibernate.show_sql" value="true" /> <!-- auf false setzen-->
-			<property name="javax.persistence.validation.mode" value="NONE" />
-			<property name="hibernate.ejb.interceptor" value="dst.ass1.jpa.interceptor.SQLInterceptor" />
-		</properties>
-	</persistence-unit>
-</persistence>
+        	<property name="hibernate.show_sql" value="true" />  <!--auf false setzen-->
+
+            <!--    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+                <property name="javax.persistence.jdbc.url" value="jdbc:mysql://95.85.8.48:3306/dst2015" />
+                <property name="javax.persistence.jdbc.user" value="dst2015" />
+                <property name="javax.persistence.jdbc.password" value="dststinkt" />
+
+                <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+                <property name="hibernate.show_sql" value="true" />
+                <property name="hibernate.hbm2ddl.auto" value="create" />-->
+
+                <property name="javax.persistence.validation.mode" value="NONE" />
+                <property name="hibernate.ejb.interceptor" value="dst.ass1.jpa.interceptor.SQLInterceptor" />
+            </properties>
+        </persistence-unit>
+    </persistence>

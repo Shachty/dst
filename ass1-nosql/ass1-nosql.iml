@@ -11,6 +11,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="ass1-jpa" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.6" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:3.6.10.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:3.6.10.Final" level="project" />
     <orderEntry type="library" name="Maven: antlr:antlr:2.7.6" level="project" />

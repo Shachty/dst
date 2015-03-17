@@ -1,5 +1,6 @@
 package dst.ass1.jpa.model;
 
+import javax.persistence.EmbeddedId;
 import java.util.Date;
 
 public interface IMembership {

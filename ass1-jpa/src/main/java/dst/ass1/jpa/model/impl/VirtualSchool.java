@@ -6,16 +6,15 @@ import dst.ass1.jpa.model.IModerator;
 import dst.ass1.jpa.model.IVirtualSchool;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "virtual_school")
 public class VirtualSchool implements IVirtualSchool {
 
     @Id
     @GeneratedValue
-    @Column(name = "school_id")
     private Long id;
 
     @Column(unique = true)
@@ -25,17 +24,18 @@ public class VirtualSchool implements IVirtualSchool {
     private Date nextMaintenance;
 
     @ManyToMany(targetEntity = VirtualSchool.class)
+    @JoinTable(name = "composed_of",
+    joinColumns = {@JoinColumn(name = "partOf_id", referencedColumnName = "id")},
+    inverseJoinColumns = {@JoinColumn(name = "composedOf_id", referencedColumnName = "id")})
     private List<IVirtualSchool> composedOf;
 
     @ManyToOne(targetEntity = Moderator.class)
-    @JoinColumn(name = "school_id")
     private IModerator moderator;
 
-    @ManyToMany(targetEntity = VirtualSchool.class)
+    @ManyToMany(targetEntity = VirtualSchool.class, mappedBy = "composedOf")
     private List <IVirtualSchool> partOf;
 
     @ManyToOne(targetEntity = MOCPlatform.class)
-    @JoinColumn(name = "school_id")
     private  IMOCPlatform mocPlatform;
 
     @OneToMany(targetEntity = Classroom.class)
@@ -93,6 +93,10 @@ public class VirtualSchool implements IVirtualSchool {
 
     @Override
     public void addComposedOf(IVirtualSchool virtualSchool) {
+
+        if(composedOf == null){
+            composedOf = new ArrayList<IVirtualSchool>();
+        }
         this.composedOf.add(virtualSchool);
     }
 
@@ -108,6 +112,11 @@ public class VirtualSchool implements IVirtualSchool {
 
     @Override
     public void addPartOf(IVirtualSchool virtualSchool) {
+
+        if(this.partOf == null){
+            this.partOf = new ArrayList<IVirtualSchool>();
+        }
+
         this.partOf.add(virtualSchool);
     }
 
@@ -123,6 +132,11 @@ public class VirtualSchool implements IVirtualSchool {
 
     @Override
     public void addClassroom(IClassroom classroom) {
+
+        if(this.classrooms == null){
+            this.classrooms = new ArrayList<IClassroom>();
+        }
+
         this.classrooms.add(classroom);
     }
 

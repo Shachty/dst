@@ -7,10 +7,10 @@ import dst.ass1.jpa.model.IVirtualSchool;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "moc_platform")
 public class MOCPlatform implements IMOCPlatform {
 
     @Id
@@ -24,12 +24,10 @@ public class MOCPlatform implements IMOCPlatform {
 
     private  BigDecimal costsPerStudent;
 
-    @OneToMany(targetEntity = VirtualSchool.class, mappedBy = "mocPlatform")
+    @OneToMany(targetEntity = VirtualSchool.class)
     private List<IVirtualSchool> virtualSchools;
 
-    @ManyToMany(targetEntity = Lecturer.class)
-    private List<ILecturer> lecturers;
-
+    @OneToMany(targetEntity = Membership.class)
     private List<IMembership> memberships;
 
     @Override
@@ -84,6 +82,10 @@ public class MOCPlatform implements IMOCPlatform {
 
     @Override
     public void addMembership(IMembership membership) {
+
+        if(this.memberships == null){
+            this.memberships = new ArrayList<IMembership>();
+        }
         this.memberships.add(membership);
     }
 
@@ -99,6 +101,11 @@ public class MOCPlatform implements IMOCPlatform {
 
     @Override
     public void addVirtualSchool(IVirtualSchool virtualSchool) {
+
+        if(this.virtualSchools == null){
+            this.virtualSchools = new ArrayList<IVirtualSchool>();
+        }
+
         this.virtualSchools.add(virtualSchool);
     }
 }

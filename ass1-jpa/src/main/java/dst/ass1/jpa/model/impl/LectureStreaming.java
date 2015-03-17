@@ -6,6 +6,7 @@ import dst.ass1.jpa.model.ILectureStreaming;
 import dst.ass1.jpa.model.LectureStatus;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,11 +21,10 @@ public class LectureStreaming implements ILectureStreaming {
     private  Date end;
     private LectureStatus lectureStatus;
 
-    @ManyToMany(targetEntity = Classroom.class, mappedBy = "lectureStreamings")
+    @ManyToMany(targetEntity = Classroom.class)
     private List<IClassroom> classrooms;
 
     @OneToOne(targetEntity = Lecture.class)
-    @PrimaryKeyJoinColumn
     private  ILecture lecture;
 
     @Override
@@ -79,6 +79,11 @@ public class LectureStreaming implements ILectureStreaming {
 
     @Override
     public void addClassroom(IClassroom classroom) {
+
+        if(this.classrooms == null){
+            this.classrooms = new ArrayList<IClassroom>();
+        }
+
         this.classrooms.add(classroom);
     }
 

@@ -1,5 +1,8 @@
 package dst.ass1.jpa.model;
 
+import dst.ass1.jpa.model.impl.Classroom;
+
+import javax.persistence.ManyToMany;
 import java.util.Date;
 import java.util.List;
 

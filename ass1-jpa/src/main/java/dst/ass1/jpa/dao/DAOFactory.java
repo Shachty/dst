@@ -2,8 +2,14 @@ package dst.ass1.jpa.dao;
 
 import javax.persistence.EntityManager;
 
+import dst.ass1.jpa.dao.impl.*;
+import dst.ass1.jpa.model.ILecturer;
+import dst.ass1.jpa.model.IMOCPlatform;
+import dst.ass1.jpa.model.IMembership;
 import dst.ass2.ejb.dao.IAuditLogDAO;
 import dst.ass2.ejb.dao.IPriceDAO;
+
+import java.util.List;
 
 public class DAOFactory {
 
@@ -22,48 +28,39 @@ public class DAOFactory {
 	}
 
     public IMOCPlatformDAO getPlatformDAO() {
-        // TODO
-        return null;
+        return new MOCPlatformDAO();
     }
 
 	public IModeratorDAO getModeratorDAO() {
-		// TODO
-		return null;
+		return new ModeratorDAO();
 	}
 
 	public IVirtualSchoolDAO getVirtualSchoolDAO() {
-		// TODO
-		return null;
+		return new VirtualSchoolDAO();
 	}
 
 	public IClassroomDAO getClassroomDAO() {
-		// TODO
-		return null;
-	}
+        return new ClassroomDAO();
+    }
 
 	public IMetadataDAO getMetadataDAO() {
-		// TODO
-		return null;
+		return new MetadataDAO();
 	}
 
 	public ILectureStreamingDAO getLectureStreamingDAO() {
-		// TODO
-		return null;
+		return new LectureStreamingDAO();
 	}
 
 	public ILectureDAO getLectureDAO() {
-		// TODO
-		return null;
+		return new LectureDAO();
 	}
 
 	public IMembershipDAO getMembershipDAO() {
-		// TODO
-		return null;
+		return new MembershipDAO();
 	}
 
 	public ILecturerDAO getLecturerDAO() {
-		// TODO
-		return null;
+		return new LecturerDAO();
 	}
 
 	/*
@@ -82,4 +79,20 @@ public class DAOFactory {
 		return null;
 	}
 
+    public static class IMembershipDAOImpl implements IMembershipDAO {
+        @Override
+        public List<IMembership> findByLecturerAndPlatform(ILecturer lecturer, IMOCPlatform platform) {
+            return null;
+        }
+
+        @Override
+        public IMembership findById(Long id) {
+            return null;
+        }
+
+        @Override
+        public List<IMembership> findAll() {
+            return null;
+        }
+    }
 }

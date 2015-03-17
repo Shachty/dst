@@ -5,11 +5,11 @@ import dst.ass1.jpa.model.ILectureStreaming;
 import dst.ass1.jpa.model.IVirtualSchool;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "classroom")
 public class Classroom implements IClassroom {
 
     @Id
@@ -28,10 +28,6 @@ public class Classroom implements IClassroom {
     private IVirtualSchool virtualSchool;
 
     @ManyToMany(targetEntity = LectureStreaming.class)
-    @JoinTable(
-            name = "classroom_stream",
-            joinColumns = {@JoinColumn(name = "classroom_id", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "stream_id", referencedColumnName = "ID")})
     private  List<ILectureStreaming> lectureStreamings;
 
     @Override
@@ -116,6 +112,10 @@ public class Classroom implements IClassroom {
 
     @Override
     public void addLectureStreaming(ILectureStreaming streaming) {
+        if(this.lectureStreamings == null){
+            this.lectureStreamings = new ArrayList<ILectureStreaming>();
+        }
+
             this.lectureStreamings.add(streaming);
     }
 }

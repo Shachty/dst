@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1685435739">
+  <component name="DataSourceManagerImpl" format="xml" hash="3597768734">
     <data-source source="LOCAL" name="dst_pu" uuid="54409f5e-4612-443a-a98b-c83a3a07b5fa">
       <driver-ref>h2.embedded</driver-ref>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
@@ -16,6 +16,19 @@
           <url>file://$MAVEN_REPOSITORY$/com/h2database/h2/1.3.175/h2-1.3.175.jar</url>
         </library>
       </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="MySQL - dst2015@95.85.8.48" uuid="c6171e5c-0fad-4a9d-aa9f-5c927d4ec3cd">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://95.85.8.48:3306/dst2015</jdbc-url>
+      <user-name>dst2015</user-name>
+      <user-password>dfcedfd9dfdedfd9dfdedfc3dfc4dfc1dfde</user-password>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+      </driver-properties>
+      <libraries />
     </data-source>
   </component>
 </project>

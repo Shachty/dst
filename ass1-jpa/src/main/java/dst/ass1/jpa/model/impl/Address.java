@@ -4,15 +4,13 @@ import dst.ass1.jpa.model.IAddress;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "address")
+@Embeddable
 public class Address implements IAddress {
 
-    @Id
     private String street;
-    @Id
+
     private String city;
-    @Id
+
     private String zipCode;
 
 

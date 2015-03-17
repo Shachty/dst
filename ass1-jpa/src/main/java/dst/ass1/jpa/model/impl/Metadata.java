@@ -3,10 +3,10 @@ package dst.ass1.jpa.model.impl;
 import dst.ass1.jpa.model.IMetadata;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "metadata")
 public class Metadata implements IMetadata {
 
     @Id
@@ -14,6 +14,8 @@ public class Metadata implements IMetadata {
     private Long id;
 
     private String course;
+
+    @ElementCollection
     private List<String> settings;
 
     @Override
@@ -48,6 +50,10 @@ public class Metadata implements IMetadata {
 
     @Override
     public void addSetting(String setting) {
-        settings.add(setting);
+
+        if(this.settings == null){
+            this.settings = new ArrayList<String>();
+        }
+        this.settings.add(setting);
     }
 }

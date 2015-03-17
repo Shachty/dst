@@ -5,16 +5,16 @@ import dst.ass1.jpa.model.IMOCPlatform;
 import dst.ass1.jpa.model.IMembershipKey;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
-public class MembershipKey implements IMembershipKey {
+@Embeddable
+public class MembershipKey implements IMembershipKey, Serializable {
 
-    @Id
-    @OneToOne(targetEntity = Lecturer.class)
+
+    @ManyToOne(targetEntity = Lecturer.class)
     private ILecturer lecturer;
 
-    @Id
-    @OneToOne(targetEntity = MOCPlatform.class)
+    @ManyToOne(targetEntity = MOCPlatform.class)
     private IMOCPlatform mocPlatform;
 
 

@@ -644,4 +644,11 @@
       <column name="ID" sqlType="INTEGER" precision="10" scale="0" nullable="true" jdbcType="4"/>
     </table>
   </data-source>
+  <data-source source="LOCAL" name="MySQL - dst2015@95.85.8.48" uuid="c6171e5c-0fad-4a9d-aa9f-5c927d4ec3cd">
+    <database-info product="MySQL" version="5.5.41-0+wheezy1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+  </data-source>
 </component>
