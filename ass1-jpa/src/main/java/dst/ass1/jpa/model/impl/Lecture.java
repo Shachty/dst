@@ -9,8 +9,6 @@ import dst.ass1.jpa.util.Constants;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "lecture")
-@NamedQuery(name = Constants.Q_MOSTACTIVELECTURER, query = "SELECT l FROM Lecture l WHERE l.lectureStreaming.lectureStatus = dst.ass1.jpa.model.LectureStatus.FINISHED")
 public class Lecture implements ILecture {
 
     @Id

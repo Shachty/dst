@@ -2,6 +2,7 @@ package dst.ass1.jpa.dao.impl;
 
 import dst.ass1.jpa.dao.IMOCPlatformDAO;
 import dst.ass1.jpa.model.IMOCPlatform;
+import dst.ass1.jpa.model.impl.MOCPlatform;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -21,8 +22,8 @@ public class MOCPlatformDAO implements IMOCPlatformDAO {
 
     @Override
     public IMOCPlatform findById(Long id) {
-        return null;
-    }
+       return this.em.find(MOCPlatform.class, id);
+       }
 
     @Override
     public List<IMOCPlatform> findAll() {

@@ -9,7 +9,6 @@ import java.util.List;
 
 public class MetadataDAO implements IMetadataDAO {
 
-    private static String GET_BY_ID_QUERY_NAME = "GetByIdMetadata";
     private EntityManager em;
 
     public MetadataDAO(EntityManager em) {
@@ -18,8 +17,7 @@ public class MetadataDAO implements IMetadataDAO {
 
     @Override
     public IMetadata findById(Long id) {
-
-        return this.em.createNamedQuery(GET_BY_ID_QUERY_NAME, Metadata.class).setParameter("id", id).getSingleResult();
+        return this.em.find(Metadata.class, id);
     }
 
     @Override

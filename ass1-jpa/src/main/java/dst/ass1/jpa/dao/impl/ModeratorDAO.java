@@ -2,6 +2,7 @@ package dst.ass1.jpa.dao.impl;
 
 import dst.ass1.jpa.dao.IModeratorDAO;
 import dst.ass1.jpa.model.IModerator;
+import dst.ass1.jpa.model.impl.Moderator;
 
 import javax.persistence.EntityManager;
 import java.util.Date;
@@ -9,8 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ModeratorDAO implements IModeratorDAO {
-    public ModeratorDAO(EntityManager em) {
 
+    private EntityManager em;
+
+    public ModeratorDAO(EntityManager em) {
+        this.em = em;
     }
 
     @Override
@@ -20,7 +24,7 @@ public class ModeratorDAO implements IModeratorDAO {
 
     @Override
     public IModerator findById(Long id) {
-        return null;
+        return this.em.find(Moderator.class, id);
     }
 
     @Override

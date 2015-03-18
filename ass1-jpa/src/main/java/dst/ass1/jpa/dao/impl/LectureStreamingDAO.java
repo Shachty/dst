@@ -3,13 +3,16 @@ package dst.ass1.jpa.dao.impl;
 import dst.ass1.jpa.dao.ILectureStreamingDAO;
 import dst.ass1.jpa.model.ILectureStreaming;
 import dst.ass1.jpa.model.LectureStatus;
+import dst.ass1.jpa.model.impl.LectureStreaming;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 public class LectureStreamingDAO implements ILectureStreamingDAO {
-    public LectureStreamingDAO(EntityManager em) {
+    private EntityManager em;
 
+    public LectureStreamingDAO(EntityManager em) {
+        this.em = em;
     }
 
     @Override
@@ -19,7 +22,7 @@ public class LectureStreamingDAO implements ILectureStreamingDAO {
 
     @Override
     public ILectureStreaming findById(Long id) {
-        return null;
+       return this.em.find(LectureStreaming.class, id);
     }
 
     @Override

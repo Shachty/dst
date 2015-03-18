@@ -4,13 +4,16 @@ import dst.ass1.jpa.dao.IMembershipDAO;
 import dst.ass1.jpa.model.ILecturer;
 import dst.ass1.jpa.model.IMOCPlatform;
 import dst.ass1.jpa.model.IMembership;
+import dst.ass1.jpa.model.impl.Membership;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 public class MembershipDAO implements IMembershipDAO {
-    public MembershipDAO(EntityManager em) {
+    private EntityManager em;
 
+    public MembershipDAO(EntityManager em) {
+        this.em = em;
     }
 
     @Override
@@ -20,7 +23,7 @@ public class MembershipDAO implements IMembershipDAO {
 
     @Override
     public IMembership findById(Long id) {
-        return null;
+        return this.em.find(Membership.class, id);
     }
 
     @Override

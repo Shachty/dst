@@ -2,14 +2,17 @@ package dst.ass1.jpa.dao.impl;
 
 import dst.ass1.jpa.dao.ILectureDAO;
 import dst.ass1.jpa.model.ILecture;
+import dst.ass1.jpa.model.impl.Lecture;
 
 import javax.persistence.EntityManager;
 import java.util.Date;
 import java.util.List;
 
 public class LectureDAO implements ILectureDAO {
-    public LectureDAO(EntityManager em) {
+    private EntityManager em;
 
+    public LectureDAO(EntityManager em) {
+        this.em = em;
     }
 
     @Override
@@ -24,7 +27,7 @@ public class LectureDAO implements ILectureDAO {
 
     @Override
     public ILecture findById(Long id) {
-        return null;
+    return this.em.find(Lecture.class, id);
     }
 
     @Override

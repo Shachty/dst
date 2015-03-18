@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedQuery(name = "GetByIdLecturer", query = "SELECT l from Lecturer l where id = :id")
 @Table( uniqueConstraints = @UniqueConstraint(columnNames = {"accountNo","bankCode"}))
 public class Lecturer extends Person implements ILecturer {
 

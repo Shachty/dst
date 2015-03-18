@@ -10,8 +10,6 @@ import javax.persistence.NamedQuery;
 import java.util.List;
 
 public class ClassroomDAO implements IClassroomDAO {
-
-    private static String GET_BY_ID_QUERY_NAME = "GetByIdClassroom";
     private EntityManager em;
 
     public ClassroomDAO(EntityManager em) {
@@ -25,7 +23,7 @@ public class ClassroomDAO implements IClassroomDAO {
 
     @Override
     public IClassroom findById(Long id) {
-        return this.em.createNamedQuery(GET_BY_ID_QUERY_NAME, Classroom.class).setParameter("id", id).getSingleResult();
+       return this.em.find(Classroom.class, id);
     }
 
     @Override

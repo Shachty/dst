@@ -9,7 +9,6 @@ import java.util.List;
 
 public class VirtualSchoolDAO implements IVirtualSchoolDAO {
 
-    private static String GET_BY_ID_QUERY_NAME = "GetByIdVirtualSchool";
     private EntityManager em;
 
     public VirtualSchoolDAO(EntityManager em) {
@@ -18,9 +17,7 @@ public class VirtualSchoolDAO implements IVirtualSchoolDAO {
 
     @Override
     public IVirtualSchool findById(Long id) {
-
-       return this.em.createNamedQuery(GET_BY_ID_QUERY_NAME, VirtualSchool.class).setParameter("id", id).getSingleResult();
-
+        return this.em.find(VirtualSchool.class, id);
     }
 
     @Override
