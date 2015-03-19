@@ -10,7 +10,7 @@ import java.util.List;
 public class MOCPlatformDAO implements IMOCPlatformDAO {
 
     private EntityManager em;
-
+    private static final String GET_ALL_QUERY = "SELECT m FROM MOCPlatform m";
     public MOCPlatformDAO(EntityManager em) {
         this.em = em;
     }
@@ -27,6 +27,6 @@ public class MOCPlatformDAO implements IMOCPlatformDAO {
 
     @Override
     public List<IMOCPlatform> findAll() {
-        return null;
+        return em.createQuery(GET_ALL_QUERY,IMOCPlatform.class).getResultList();
     }
 }

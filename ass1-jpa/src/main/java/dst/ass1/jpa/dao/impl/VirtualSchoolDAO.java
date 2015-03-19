@@ -10,7 +10,7 @@ import java.util.List;
 public class VirtualSchoolDAO implements IVirtualSchoolDAO {
 
     private EntityManager em;
-
+    private static final String GET_ALL_QUERY = "SELECT v FROM VirtualSchool v";
     public VirtualSchoolDAO(EntityManager em) {
         this.em = em;
     }
@@ -22,6 +22,6 @@ public class VirtualSchoolDAO implements IVirtualSchoolDAO {
 
     @Override
     public List<IVirtualSchool> findAll() {
-        return null;
+        return em.createQuery(GET_ALL_QUERY,IVirtualSchool.class).getResultList();
     }
 }

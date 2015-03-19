@@ -10,6 +10,7 @@ import java.util.List;
 public class LecturerDAO implements ILecturerDAO {
 
     private EntityManager em;
+    private static final String GET_ALL_QUERY = "SELECT l FROM Lecturer l";
     public LecturerDAO(EntityManager em) {
         this.em = em;
     }
@@ -26,6 +27,7 @@ public class LecturerDAO implements ILecturerDAO {
 
     @Override
     public List<ILecturer> findAll() {
-        return null;
+
+        return em.createQuery(GET_ALL_QUERY,ILecturer.class).getResultList();
     }
 }

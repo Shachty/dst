@@ -11,6 +11,7 @@ import java.util.List;
 
 public class MembershipDAO implements IMembershipDAO {
     private EntityManager em;
+    private static final String GET_ALL_QUERY = "SELECT m FROM Membership m";
 
     public MembershipDAO(EntityManager em) {
         this.em = em;
@@ -28,6 +29,7 @@ public class MembershipDAO implements IMembershipDAO {
 
     @Override
     public List<IMembership> findAll() {
-        return null;
+
+        return em.createQuery(GET_ALL_QUERY,IMembership.class).getResultList();
     }
 }

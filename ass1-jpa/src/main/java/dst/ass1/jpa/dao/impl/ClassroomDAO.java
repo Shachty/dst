@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ClassroomDAO implements IClassroomDAO {
     private EntityManager em;
-
+    private static final String GET_ALL_QUERY = "SELECT c FROM Classroom c";
     public ClassroomDAO(EntityManager em) {
         this.em = em;
     }
@@ -28,6 +28,6 @@ public class ClassroomDAO implements IClassroomDAO {
 
     @Override
     public List<IClassroom> findAll() {
-        return null;
+        return em.createQuery(GET_ALL_QUERY,IClassroom.class).getResultList();
     }
 }

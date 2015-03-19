@@ -9,7 +9,9 @@ import java.util.Date;
 import java.util.List;
 
 public class LectureDAO implements ILectureDAO {
+
     private EntityManager em;
+    private static final String GET_ALL_QUERY = "SELECT l FROM Lecture l";
 
     public LectureDAO(EntityManager em) {
         this.em = em;
@@ -32,6 +34,6 @@ public class LectureDAO implements ILectureDAO {
 
     @Override
     public List<ILecture> findAll() {
-        return null;
+     return em.createQuery(GET_ALL_QUERY,ILecture.class).getResultList();
     }
 }

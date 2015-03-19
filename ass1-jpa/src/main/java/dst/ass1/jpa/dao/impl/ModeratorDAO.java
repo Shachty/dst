@@ -12,7 +12,7 @@ import java.util.List;
 public class ModeratorDAO implements IModeratorDAO {
 
     private EntityManager em;
-
+    private static final String GET_ALL_QUERY = "SELECT m FROM Moderator m";
     public ModeratorDAO(EntityManager em) {
         this.em = em;
     }
@@ -29,6 +29,6 @@ public class ModeratorDAO implements IModeratorDAO {
 
     @Override
     public List<IModerator> findAll() {
-        return null;
+        return em.createQuery(GET_ALL_QUERY,IModerator.class).getResultList();
     }
 }

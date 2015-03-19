@@ -10,6 +10,7 @@ import java.util.List;
 public class MetadataDAO implements IMetadataDAO {
 
     private EntityManager em;
+    private static final String GET_ALL_QUERY = "SELECT m FROM Metadata m";
 
     public MetadataDAO(EntityManager em) {
         this.em = em;
@@ -22,6 +23,6 @@ public class MetadataDAO implements IMetadataDAO {
 
     @Override
     public List<IMetadata> findAll() {
-        return null;
+        return em.createQuery(GET_ALL_QUERY,IMetadata.class).getResultList();
     }
 }

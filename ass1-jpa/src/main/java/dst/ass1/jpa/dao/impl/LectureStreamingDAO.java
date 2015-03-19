@@ -10,7 +10,7 @@ import java.util.List;
 
 public class LectureStreamingDAO implements ILectureStreamingDAO {
     private EntityManager em;
-
+    private static final String GET_ALL_QUERY = "SELECT l FROM LectureStreaming l";
     public LectureStreamingDAO(EntityManager em) {
         this.em = em;
     }
@@ -27,6 +27,7 @@ public class LectureStreamingDAO implements ILectureStreamingDAO {
 
     @Override
     public List<ILectureStreaming> findAll() {
-        return null;
+
+        return em.createQuery(GET_ALL_QUERY,ILectureStreaming.class).getResultList();
     }
 }
