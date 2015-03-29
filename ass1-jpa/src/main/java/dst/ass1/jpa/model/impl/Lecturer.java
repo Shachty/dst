@@ -1,6 +1,7 @@
 package dst.ass1.jpa.model.impl;
 
 import dst.ass1.jpa.model.*;
+import dst.ass1.jpa.util.Constants;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedQuery(name = Constants.Q_MOSTACTIVELECTURER, query = "SELECT l from Lecturer l ")
 @Table( uniqueConstraints = @UniqueConstraint(columnNames = {"accountNo","bankCode"}))
 public class Lecturer extends Person implements ILecturer {
 

@@ -3,12 +3,19 @@ package dst.ass1.jpa.model.impl;
 import dst.ass1.jpa.model.IAddress;
 import dst.ass1.jpa.model.IModerator;
 import dst.ass1.jpa.model.IVirtualSchool;
+import dst.ass1.jpa.util.Constants;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Constants.Q_VIRTUALSCHOOLSOFMODERATOR, query = "Select m from Moderator m where m.firstName like 'Alex%'"),
+        @NamedQuery(name = "virtualSchoolsByAlex", query = "Select v FROM Moderator m, VirtualSchool v WHERE m.firstName LIKE 'Alex%'")
+}
+
+)
 public class Moderator extends Person implements IModerator {
 
 
