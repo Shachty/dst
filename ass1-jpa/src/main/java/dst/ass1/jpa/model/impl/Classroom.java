@@ -3,8 +3,12 @@ package dst.ass1.jpa.model.impl;
 import dst.ass1.jpa.model.IClassroom;
 import dst.ass1.jpa.model.ILectureStreaming;
 import dst.ass1.jpa.model.IVirtualSchool;
+import dst.ass1.jpa.validator.StudentCapacity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,11 +21,18 @@ public class Classroom implements IClassroom {
     private Long id;
 
     @Column(unique = true)
+    @Size(min = 5, max = 25)
     private String name;
 
-    private int studenCapacity;
+    @StudentCapacity(min = 40 , max = 80)
+    private int studentCapacity;
+
+    @Pattern(regexp = "[A-Z]{3}-[A-Z]{3}@\\d{4,}")
     private String region;
+
+    @Past
     private Date activated;
+    @Past
     private Date lastUpdated;
 
     @ManyToOne(targetEntity = VirtualSchool.class)
@@ -52,12 +63,12 @@ public class Classroom implements IClassroom {
 
     @Override
     public Integer getStudentCapacity() {
-        return studenCapacity;
+        return studentCapacity;
     }
 
     @Override
     public void setStudentCapacity(Integer studentCapacity) {
-        this.studenCapacity = studentCapacity;
+        this.studentCapacity = studentCapacity;
     }
 
     @Override

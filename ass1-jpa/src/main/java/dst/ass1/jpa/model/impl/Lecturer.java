@@ -2,6 +2,7 @@ package dst.ass1.jpa.model.impl;
 
 import dst.ass1.jpa.model.*;
 import dst.ass1.jpa.util.Constants;
+import org.hibernate.annotations.Index;
 
 import javax.persistence.*;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,7 @@ public class Lecturer extends Person implements ILecturer {
     @Column(unique = true, nullable = false)
     private String lecturerName;
 
+    @Index(name="password")
     private byte[] password;
 
     private String accountNo;
