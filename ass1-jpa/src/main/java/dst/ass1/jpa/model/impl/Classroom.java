@@ -1,5 +1,6 @@
 package dst.ass1.jpa.model.impl;
 
+import dst.ass1.jpa.listener.ClassroomListener;
 import dst.ass1.jpa.model.IClassroom;
 import dst.ass1.jpa.model.ILectureStreaming;
 import dst.ass1.jpa.model.IVirtualSchool;
@@ -14,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@EntityListeners(ClassroomListener.class)
 public class Classroom implements IClassroom {
 
     @Id
