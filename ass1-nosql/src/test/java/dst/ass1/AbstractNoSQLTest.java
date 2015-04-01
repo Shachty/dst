@@ -37,6 +37,14 @@ public abstract class AbstractNoSQLTest {
 
 	@Before
 	public void setUp() throws Exception {
+
+        //todo: delete
+        // Enable MongoDB logging in general
+        System.setProperty("DEBUG.MONGO", "true");
+
+        // Enable DB operation tracing
+      //  System.setProperty("DB.TRACE", "true");
+
 		emf = Persistence.createEntityManagerFactory(PersistenceUtil.PERSISTENCE_UNIT_NAME);
 		em = emf.createEntityManager();
 		daoFactory = new DAOFactory(em);

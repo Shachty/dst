@@ -26,7 +26,7 @@ public class Classroom implements IClassroom {
     @Size(min = 5, max = 25)
     private String name;
 
-    @StudentCapacity(min = 40 , max = 80)
+   // @StudentCapacity(min = 40 , max = 80)
     private int studentCapacity;
 
     @Pattern(regexp = "[A-Z]{3}-[A-Z]{3}@\\d{4,}")
@@ -40,7 +40,7 @@ public class Classroom implements IClassroom {
     @ManyToOne(targetEntity = VirtualSchool.class)
     private IVirtualSchool virtualSchool;
 
-    @ManyToMany(targetEntity = LectureStreaming.class)
+    @ManyToMany(targetEntity = LectureStreaming.class, mappedBy = "classrooms")
     private  List<ILectureStreaming> lectureStreamings;
 
     @Override

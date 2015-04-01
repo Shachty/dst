@@ -25,7 +25,7 @@ public class Lecturer extends Person implements ILecturer {
     private String bankCode;
 
 
-    @OneToMany(targetEntity = Lecture.class)
+    @OneToMany(targetEntity = Lecture.class, mappedBy = "lecturer")
     private List<ILecture> lectures;
 
     @OneToMany(targetEntity = Membership.class, mappedBy = "membershipKey.lecturer")

@@ -13,7 +13,7 @@ public class MongoDbFactory {
 	}
 
 	public IMongoDbQuery createQuery(DB db) {
-		return new MongoDbQuery();
+		return new MongoDbQuery(db);
 	}
 
 }

@@ -7,6 +7,7 @@ import dst.ass1.jpa.model.ILecture;
 import dst.ass1.jpa.util.Constants;
 import dst.ass1.nosql.IMongoDbDataLoader;
 import dst.ass1.nosql.MongoTestData;
+import org.bson.types.BSONTimestamp;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -40,12 +41,11 @@ public class MongoDbDataLoader implements IMongoDbDataLoader {
 
         for(ILecture l : lectures){
 
-            BasicDBList basicDBList = new BasicDBList();
 
-            BasicDBObject dbObject = new BasicDBObject(
+            BasicDBObject dbObject =
                     new BasicDBObject("lecture_id",l.getId())
-                    .append("lecture_finished", new Date())
-                    .append("lecture_data", JSON.parse(mongoTestData.getData(l.getId()) )));
+                    .append(Constants.PROP_LECTUREFINISHED, l.getLectureStreaming().getEnd().getTime())
+                    .append(mongoTestData.getDataDescription(l.getId()), JSON.parse(mongoTestData.getData(l.getId())));
 
         coll.insert(dbObject);
 
