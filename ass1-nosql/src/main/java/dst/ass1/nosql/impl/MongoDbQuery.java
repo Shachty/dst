@@ -20,7 +20,7 @@ public class MongoDbQuery implements IMongoDbQuery {
 
         DBCollection coll = db.getCollection(Constants.COLL_LECTUREDATA);
 
-        return (Long) coll.find(new BasicDBObject("lecture_id", id)).next().get("lecture_finished");
+        return (Long) coll.find(new BasicDBObject("lecture_id", id)).next().get(Constants.PROP_LECTUREFINISHED);
 
     }
 
@@ -31,7 +31,8 @@ public class MongoDbQuery implements IMongoDbQuery {
 
         DBCollection coll = db.getCollection(Constants.COLL_LECTUREDATA);
 
-        DBCursor cursor = coll.find(new BasicDBObject("lecture_timestamp",new BasicDBObject("$lt", time)).append("lecture_id","1"));
+        DBCursor cursor = coll.find(new BasicDBObject(Constants.PROP_LECTUREFINISHED, new BasicDBObject("$gt", time))
+                , new BasicDBObject("lecture_id", "1"));
 
         while(cursor.hasNext()){
             ids.add((Long) cursor.next().get("lecture_id"));
