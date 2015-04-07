@@ -17,11 +17,13 @@ public class VirtualSchoolDAO implements IVirtualSchoolDAO {
 
     @Override
     public IVirtualSchool findById(Long id) {
+        System.out.println(this.getClass().toString() + " : findById");
         return this.em.find(VirtualSchool.class, id);
     }
 
     @Override
     public List<IVirtualSchool> findAll() {
+        System.out.println(this.getClass().toString() + " : findAll");
         return em.createQuery(GET_ALL_QUERY,IVirtualSchool.class).getResultList();
     }
 }

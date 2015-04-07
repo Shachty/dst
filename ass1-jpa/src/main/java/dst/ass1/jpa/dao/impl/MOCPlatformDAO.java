@@ -22,11 +22,14 @@ public class MOCPlatformDAO implements IMOCPlatformDAO {
 
     @Override
     public IMOCPlatform findById(Long id) {
+        System.out.println(this.getClass().toString() + " : findById");
        return this.em.find(MOCPlatform.class, id);
        }
 
     @Override
     public List<IMOCPlatform> findAll() {
+
+        System.out.println(this.getClass().toString() + " : findAll");
         return em.createQuery(GET_ALL_QUERY,IMOCPlatform.class).getResultList();
     }
 }

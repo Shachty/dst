@@ -18,7 +18,7 @@ public class StudentCapacityValidator implements ConstraintValidator<StudentCapa
     @Override
     public boolean isValid(Integer integer, ConstraintValidatorContext constraintValidatorContext) {
 
-
+        System.out.println(this.getClass().toString() + " : validation started");
         if( integer < min) return false;
         if(integer > max) return false;
 

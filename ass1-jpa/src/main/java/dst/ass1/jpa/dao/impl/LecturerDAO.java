@@ -22,11 +22,13 @@ public class LecturerDAO implements ILecturerDAO {
 
     @Override
     public ILecturer findById(Long id) {
+        System.out.println(this.getClass().toString() + " : findById");
      return this.em.find(Lecturer.class, id);
     }
 
     @Override
     public List<ILecturer> findAll() {
+        System.out.println(this.getClass().toString() + " : findAll");
 
         return em.createQuery(GET_ALL_QUERY,ILecturer.class).getResultList();
     }

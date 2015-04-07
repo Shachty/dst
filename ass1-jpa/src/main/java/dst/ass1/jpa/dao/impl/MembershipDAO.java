@@ -24,12 +24,13 @@ public class MembershipDAO implements IMembershipDAO {
 
     @Override
     public IMembership findById(Long id) {
+        System.out.println(this.getClass().toString() + " : findById");
         return this.em.find(Membership.class, id);
     }
 
     @Override
     public List<IMembership> findAll() {
-
+        System.out.println(this.getClass().toString() + " : findAll");
         return em.createQuery(GET_ALL_QUERY,IMembership.class).getResultList();
     }
 }

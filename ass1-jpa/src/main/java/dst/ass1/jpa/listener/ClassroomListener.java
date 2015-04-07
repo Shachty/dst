@@ -15,6 +15,8 @@ public class ClassroomListener {
     @PrePersist
 	public void setFields(Classroom classroom){
 
+        System.out.println(this.getClass().toString() + " : prePersist : Fields are getting set with new Date");
+
         classroom.setActivated(new Date());
         classroom.setLastUpdate(new Date());
 
@@ -24,6 +26,8 @@ public class ClassroomListener {
 
     @PreUpdate
     public void updateField(Classroom classroom){
+
+        System.out.println(this.getClass().toString() + " : preUpdate : Field is getting updated with new Date");
 
         classroom.setLastUpdate(new Date());
     }

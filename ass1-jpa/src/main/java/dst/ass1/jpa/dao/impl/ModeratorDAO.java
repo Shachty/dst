@@ -38,11 +38,14 @@ public class ModeratorDAO implements IModeratorDAO {
 
     @Override
     public IModerator findById(Long id) {
+
+        System.out.println(this.getClass().toString() + " : findById");
         return this.em.find(Moderator.class, id);
     }
 
     @Override
     public List<IModerator> findAll() {
+        System.out.println(this.getClass().toString() + " : findAll");
         return em.createQuery(GET_ALL_QUERY,IModerator.class).getResultList();
     }
 

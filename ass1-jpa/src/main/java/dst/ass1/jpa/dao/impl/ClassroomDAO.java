@@ -23,11 +23,15 @@ public class ClassroomDAO implements IClassroomDAO {
 
     @Override
     public IClassroom findById(Long id) {
+        System.out.println(this.getClass().toString() + " : findById");
        return this.em.find(Classroom.class, id);
+
     }
 
     @Override
     public List<IClassroom> findAll() {
+
+        System.out.println(this.getClass().toString() + " : findAll");
         return em.createQuery(GET_ALL_QUERY,IClassroom.class).getResultList();
     }
 }

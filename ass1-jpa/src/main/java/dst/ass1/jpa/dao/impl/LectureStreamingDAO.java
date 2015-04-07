@@ -22,12 +22,14 @@ public class LectureStreamingDAO implements ILectureStreamingDAO {
 
     @Override
     public ILectureStreaming findById(Long id) {
-       return this.em.find(LectureStreaming.class, id);
+
+        System.out.println(this.getClass().toString() + " : findById");
+        return this.em.find(LectureStreaming.class, id);
     }
 
     @Override
     public List<ILectureStreaming> findAll() {
-
+        System.out.println(this.getClass().toString() + " : findAll");
         return em.createQuery(GET_ALL_QUERY,ILectureStreaming.class).getResultList();
     }
 }

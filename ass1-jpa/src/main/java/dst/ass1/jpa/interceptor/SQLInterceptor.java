@@ -12,6 +12,7 @@ public class SQLInterceptor extends EmptyInterceptor {
 		
 		if(sql.toLowerCase().contains("from moderator") || sql.toLowerCase().contains("from virtualschool")){
             counter ++;
+            System.out.println(this.getClass().toString() + ": incrementing counter");
         }
 		
 		return sql;
@@ -19,6 +20,7 @@ public class SQLInterceptor extends EmptyInterceptor {
 
 	public static void resetCounter() {
 		counter = 0;
+        System.out.println( ": reset counter");
 	}
 
 	

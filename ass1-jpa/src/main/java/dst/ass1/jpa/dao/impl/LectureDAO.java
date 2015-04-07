@@ -73,11 +73,12 @@ public class LectureDAO implements ILectureDAO {
 
     @Override
     public ILecture findById(Long id) {
+        System.out.println(this.getClass().toString() + " : findById");
         return this.em.find(Lecture.class, id);
     }
 
     @Override
-    public List<ILecture> findAll() {
+    public List<ILecture> findAll() { System.out.println(this.getClass().toString() + " : findByAll");
         return em.createQuery(GET_ALL_QUERY, ILecture.class).getResultList();
     }
 }

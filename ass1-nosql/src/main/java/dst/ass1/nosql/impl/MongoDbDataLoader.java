@@ -25,6 +25,8 @@ public class MongoDbDataLoader implements IMongoDbDataLoader {
     @Override
     public void loadData() throws Exception {
 
+        System.out.println(this.getClass().toString() + " : lodaing data started");
+
         Mongo mongo = new Mongo();
         DB db = mongo.getDB(Constants.MONGO_DB_NAME);
         DBCollection coll = db.getCollection(Constants.COLL_LECTUREDATA);
