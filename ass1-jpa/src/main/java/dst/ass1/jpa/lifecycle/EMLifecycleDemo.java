@@ -85,11 +85,13 @@ public class EMLifecycleDemo {
     }
 
     private void persistDemo(){
+
+        System.out.println("Persistdemo: Object is getting persisted. It's in managed state");
         em.getTransaction().begin();
 
         em.persist(lecturer);
         em.persist(metadata); //has to be done in because of the unidirectional association
-     
+
         em.getTransaction().commit();
 
         this.lectureID = lecture.getId();
@@ -97,6 +99,8 @@ public class EMLifecycleDemo {
     }
 
     private void clearDemo(){
+
+        System.out.println("ClearDemo: Object is getting cleared. It's not managed anymore");
         em.getTransaction().begin();
 
         System.out.println("lecture is managed: " + em.contains(lecture));
@@ -110,7 +114,7 @@ public class EMLifecycleDemo {
 
     private void flushDemo(){
 
-        System.out.println("Flush Demo");
+        System.out.println("Flush Demo: Changes should be set to database");
 
         ILecture lecture1 = em.find(Lecture.class, lectureID);
 
@@ -135,7 +139,8 @@ public class EMLifecycleDemo {
 
     private void mergeDemo(){
 
-        System.out.println("Merge Demo");
+        System.out.println("Mergedemo: Object is getting merged back to the entitymaneger. It's managed again.");
+
 
         em.getTransaction().begin();
 
@@ -162,6 +167,8 @@ public class EMLifecycleDemo {
     }
 
     private void removeDemo(){
+
+        System.out.println("RemoveDemo: Object is getting removed from the database and isn managed anymore, of course.");
 
         ILecture lecture1 = em.find(Lecture.class, lectureID);
 
