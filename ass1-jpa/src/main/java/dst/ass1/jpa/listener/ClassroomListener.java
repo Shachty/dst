@@ -7,24 +7,25 @@ import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import java.util.Date;
 
-@EntityListeners(value=Classroom.class)
+
 public class ClassroomListener {
 
     @PrePersist
-	public void setFields(IClassroom classroom){
+	public void setFields(Classroom classroom){
 
-        classroom.setActivated(classroom.getActivated());
-        classroom.setLastUpdate(classroom.getLastUpdate());
+        classroom.setActivated(new Date());
+        classroom.setLastUpdate(new Date());
 
 
 
     }
 
     @PreUpdate
-    public void updateField(IClassroom classroom){
+    public void updateField(Classroom classroom){
 
-        classroom.setLastUpdate(classroom.getLastUpdate());
+        classroom.setLastUpdate(new Date());
     }
 	
 }

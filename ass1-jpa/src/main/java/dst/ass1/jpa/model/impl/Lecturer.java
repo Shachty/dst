@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NamedQuery(name = Constants.Q_MOSTACTIVELECTURER, query = "SELECT l from Lecturer l ")
+@NamedQueries({
+@NamedQuery(name = Constants.Q_MOSTACTIVELECTURER, query = "SELECT l from Lecturer l WHERE (select max(le.lectures.size) from Lecturer  le) = l.lectures.size AND l.lectures.size > 0"),
+@NamedQuery(name = Constants.Q_LECTURERSWITHACTIVEMEMBERSHIP, query = "SELECT l FROM Lecturer l JOIN l.memberships m WHERE m.id.mocPlatform.name = :name AND (SELECT count(distinct l1) FROM Lecture l1 JOIN l1.lectureStreaming.classrooms c WHERE l1.lecturer = l AND c.virtualSchool.mocPlatform = m.id.mocPlatform) >= :minNr")})
 @Table( uniqueConstraints = @UniqueConstraint(columnNames = {"accountNo","bankCode"}))
 public class Lecturer extends Person implements ILecturer {
 
@@ -18,6 +20,7 @@ public class Lecturer extends Person implements ILecturer {
     private String lecturerName;
 
     @Index(name="password")
+    @Column(columnDefinition = "varbinary(16)")
     private byte[] password;
 
     private String accountNo;

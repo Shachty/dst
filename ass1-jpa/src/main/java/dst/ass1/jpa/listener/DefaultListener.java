@@ -17,17 +17,10 @@ public class DefaultListener {
     private static int persistOperations = 0;
     private static long overallTimeToPersist = 0;
 
-    private Map<IClassroom, Date> classroomPersistTimes = new HashMap<>();
-    private Map<IAddress, Date> addressPersistTimes = new HashMap<>();
-    private Map<ILecture, Date> lecturePersistTimes = new HashMap<>();
-    private Map<ILecturer, Date> lecturerPersistTimes = new HashMap<>();
-    private Map<ILectureStreaming, Date> lectureStreamingPersistTimes = new HashMap<>();
-    private Map<IMembership, Date> membershipPersistTimes = new HashMap<>();
-    private Map<IMetadata, Date> metadataPersistTimes = new HashMap<>();
-    private Map<IMOCPlatform, Date> mocPlatformPersistTimes = new HashMap<>();
-    private Map<IModerator, Date> moderatorPersistTimes = new HashMap<>();
-    private Map<IPerson, Date> personPersistTimes = new HashMap<>();
-    private Map<IVirtualSchool, Date> virtualSchoolPersistTimes = new HashMap<>();
+    private static Map<Object, Date> persistTimes = new HashMap<>();
+    private static Map<Object, Date> updateTimes = new HashMap<>();
+    private static Map<Object, Date> removeTimes = new HashMap<>();
+
 
 	public static int getLoadOperations() {
 		return loadOoperations;
@@ -50,7 +43,7 @@ public class DefaultListener {
 	}
 
 	public static double getAverageTimeToPersist() {
-		return overallTimeToPersist/persistOperations;
+		return overallTimeToPersist/ (double)persistOperations;
 	}
 
 	public static void clear() {
@@ -61,24 +54,69 @@ public class DefaultListener {
         overallTimeToPersist = 0;
 	}
 
-    @PostPersist
-   /* private void onPostPersist(IClassroom entity) {
-        persistOperations++;
+    @PrePersist
+    private void onPrePersist(Object o) {
 
-        synchronized (this){
-                     classroomPersistTimes.put(entity, new Date());
+        synchronized (persistTimes){
+            persistTimes.put(o, new Date());
         }
-    }*/
+
+    }
+    @PreUpdate
+    private void onPreUpdate(Object o) {
+
+        synchronized (updateTimes){
+            updateTimes.put(o, new Date());
+        }
+
+    }
+    @PreRemove
+    private void onPreDelete(Object o) {
+
+        synchronized (removeTimes){
+            removeTimes.put(o, new Date());
+        }
+
+    }
+
+
+    @PostPersist
+    private void onPostPersist(Object o) {
+
+
+        synchronized (persistTimes){
+            if(persistTimes.containsKey(o)){
+                overallTimeToPersist += new Date().getTime() - persistTimes.get(o).getTime();
+                persistTimes.remove(o);
+                persistOperations++;
+            }
+        }
+
+    }
 
 
     @PostUpdate
     void onPostUpdate(Object o) {
-        updateOperations++;
+
+        synchronized (updateTimes){
+            if(updateTimes.containsKey(o)){
+                overallTimeToPersist += new Date().getTime() - updateTimes.get(o).getTime();
+                updateTimes.remove(o);
+                updateOperations++;
+            }
+        }
     }
 
     @PostRemove
     void onPostRemove(Object o) {
-        removeOperations++;
+
+        synchronized (removeTimes){
+            if(removeTimes.containsKey(o)){
+                overallTimeToPersist += new Date().getTime() - removeTimes.get(o).getTime();
+                removeTimes.remove(o);
+                removeOperations++;
+            }
+        }
     }
 
     @PostLoad

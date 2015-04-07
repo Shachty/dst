@@ -22,6 +22,8 @@ public class LectureStreaming implements ILectureStreaming {
     private LectureStatus lectureStatus;
 
     @ManyToMany(targetEntity = Classroom.class)
+    @JoinTable(name = "streaming_classroom", joinColumns = {@JoinColumn(name = "lecturestreamings_id")}
+            ,inverseJoinColumns = {@JoinColumn(name = "classrooms_id")})
     private List<IClassroom> classrooms;
 
     @OneToOne(targetEntity = Lecture.class)

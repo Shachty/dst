@@ -15,15 +15,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Documented
 @Constraint(validatedBy = {StudentCapacityValidator.class})
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, PARAMETER })
+@Target({FIELD })
 @Retention(RUNTIME)
-@Min(0)
-@Max(Integer.MAX_VALUE)
 public @interface StudentCapacity {
 
-    int min() default 0;
+    int min();
 
-    int max() default Integer.MAX_VALUE;
+    int max();
 
     String message() default "The value has to be between {min} and {max} ";
 

@@ -89,8 +89,7 @@ public class EMLifecycleDemo {
 
         em.persist(lecturer);
         em.persist(metadata); //has to be done in because of the unidirectional association
-        em.persist(lecture);
-
+     
         em.getTransaction().commit();
 
         this.lectureID = lecture.getId();

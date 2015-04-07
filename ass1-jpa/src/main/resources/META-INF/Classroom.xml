@@ -5,5 +5,36 @@
 	version="2.0">
 	<description>Mapping file for Classroom</description>
 
+    <entity class="dst.ass1.jpa.model.impl.Classroom" name="Classroom">
+        <attributes>
+            <id name="id">
+                <generated-value/>
+            </id>
+            <basic name="name">
+                <column unique="true"/>
+            </basic>
+            <basic name="studentCapacity"/>
+            <basic name="region"/>
+            <basic name="activated"/>
+            <basic name="lastUpdated"/>
+
+            <many-to-one name="virtualSchool" target-entity= "dst.ass1.jpa.model.impl.VirtualSchool"/>
+            <many-to-many name="lectureStreamings" target-entity="dst.ass1.jpa.model.impl.LectureStreaming">
+                <join-table name="streaming_classroom">
+                    <join-column name="classrooms_id"/>
+                    <inverse-join-column name = "lecturestreamings_id"/>
+                </join-table>
+            </many-to-many>
+
+
+        </attributes>
+
+
+
+
+
+    </entity>
+
+
 
 </entity-mappings>

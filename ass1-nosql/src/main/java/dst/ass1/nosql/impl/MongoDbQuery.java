@@ -43,6 +43,39 @@ public class MongoDbQuery implements IMongoDbQuery {
 
     @Override
     public List<DBObject> mapReduceStreaming() {
-        return null;
+
+        DBCollection coll = db.getCollection(Constants.COLL_LECTUREDATA);
+
+        String map = "function map() {" +
+                "var criteria = '';" +
+                "if('matrix' in this){" +
+                "criteria = 'matrix';" +
+                "}"+
+                "if('logs' in this){" +
+                "criteria = 'logs';" +
+                "}"+
+                "if('alignment_block' in this){" +
+                "criteria = 'alignment_block';" +
+                "}"+
+                "emit(criteria,1);"+
+                "}";
+        String reduce = "function (key, values) {" +
+                "    return values.length; " +
+                "}";
+
+        MapReduceCommand cmd = new MapReduceCommand(coll, map, reduce, null, MapReduceCommand.OutputType.INLINE, null);
+
+        MapReduceOutput out = coll.mapReduce(cmd);
+
+
+        List<DBObject> dbObjects = new ArrayList<>();
+
+        for(DBObject obj : out.results()){
+            dbObjects.add(obj);
+        }
+
+        return dbObjects;
+
+
     }
 }
