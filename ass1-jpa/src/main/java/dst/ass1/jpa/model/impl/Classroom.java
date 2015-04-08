@@ -22,19 +22,19 @@ public class Classroom implements IClassroom {
 
     private Long id;
 
-    //@Column(unique = true)
+    @Column(unique = true)
     @Size(min = 5, max = 25)
     private String name;
 
-    //@StudentCapacity(min = 40 , max = 80)
+    @StudentCapacity(min = 40 , max = 80)
     private int studentCapacity;
 
     @Pattern(regexp = "[A-Z]{3}-[A-Z]{3}@\\d{4,}")
     private String region;
 
-    //@Past
+    @Past
     private Date activated;
-    //@Past
+    @Past
     private Date lastUpdated;
 
     private IVirtualSchool virtualSchool;
